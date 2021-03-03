@@ -1,6 +1,8 @@
+*/node_modules
 /node_modules
+*/static
+
 package-lock.json
-/src/node_modules
 *.mp3
 *.mp4
 *.m4a

@@ -1,18 +1,17 @@
-@import "initial-variables-override";
+/*@import "initial-variables-override";
 @import "../../node_modules/bulma/sass/utilities/functions";
 @import "derived-variables-override";
 @import "../../node_modules/bulma/sass/utilities/mixins";
 @import "../../node_modules/bulma/sass/utilities/controls";
-@import "../../node_modules/bulma/sass/utilities/extends";
+@import "../../node_modules/bulma/sass/utilities/extends";*/
+@import "../../node_modules/bulma/sass/utilities/_all";
 @import "../../node_modules/bulma/sass/base/_all";
 @import "../../node_modules/bulma/sass/elements/_all";
 @import "../../node_modules/bulma/sass/form/_all";
 @import "../../node_modules/bulma/sass/components/_all";
 @import "../../node_modules/bulma/sass/grid/_all";
 @import "../../node_modules/bulma/sass/helpers/_all";
-@import "../../node_modules/bulma/sass/layout/section";
-@import "../../node_modules/bulma/sass/layout/footer";
-@import "hero-override";
+@import "../../node_modules/bulma/sass/layout/_all";
 
 // Components
 
