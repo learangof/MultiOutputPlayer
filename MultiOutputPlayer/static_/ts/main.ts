@@ -1,4 +1,13 @@
 
+    
+function openWindow() {
+      let childWindow:Window;
+      this.disabled = true;
+      let windowFeatures:string = "new_instance=yes, toolbar=no, titlebar=no, scrollbars=no";
+      childWindow=window.open("video.html","Video",windowFeatures);
+}
+document.querySelector('#open').addEventListener("click", openWindow);
+
     // var childWindow;
     // var video;
     // var audio;

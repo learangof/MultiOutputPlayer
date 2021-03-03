@@ -1,8 +1,11 @@
-*/node_modules
+/dist
 /node_modules
+
+*/node_modules
 */static
 
 package-lock.json
 *.mp3
 *.mp4
 *.m4a
+
