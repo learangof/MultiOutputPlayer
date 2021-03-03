@@ -3,18 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/views/main.html",
-  "window": {
-    "title": "Multi-Output Player Demo",
-    "toolbar": true,
-    "frame": false,
-    "width": 800,
-    "height": 500,
-    "position": "mouse",
-    "min_width": 400,
-    "min_height": 200,
-    "max_width": 800,
-    "max_height": 600
-  },
   "scripts": {
     "dev": "nw src/",
     "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/"
