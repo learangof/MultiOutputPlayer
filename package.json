@@ -13,5 +13,6 @@
   "devDependencies": {
     "nw": "^0.51.2",
     "nw-builder": "^3.5.7"
-  }
+  },
+  "dependencies": {}
 }
