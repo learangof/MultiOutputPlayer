@@ -1,7 +1,23 @@
-.icon{
+.icon-svg{
     width: 100%;
     height: 100%;
+    background-repeat: no-repeat;
 }
 .settings{
     background-image: url("../assests/icons/sett.svg");
+}
+.play{
+    background-image: url("../assests/icons/play.svg");
+}
+.pause{
+    background-image: url("../assests/icons/pause.svg");
+}
+.stop{
+    background-image: url("../assests/icons/stop.svg");
+}
+.backward{
+    background-image: url("../assests/icons/backward.svg");
+}
+.forward{
+    background-image: url("../assests/icons/forward.svg");
 }
