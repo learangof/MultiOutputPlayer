@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html class="has-background-primary-light">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,10 +8,30 @@
         <script src="../static/main.js" defer></script>
     </head>
     <body>
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand is-justify-content-space-between">
+          <a class="navbar-item" href="#">
+            Multi-Output Player
+          </a>
+          <div class="navbar-item">
+            <button class="button">
+              <span class="icon is-small">
+                <i class="icon settings"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+
         <div class="container is-fluid py-5">
             <h1 class="title">
               Multi-Output Player
             </h1>
+            <div class="fas">
+
+            </div>
+
             <div class="columns">
               <div class="column">
                 <button disabled id="play" class="button is-primary">Play</button>
