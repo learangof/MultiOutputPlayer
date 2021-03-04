@@ -24,65 +24,130 @@
       </nav>
 
 
-        <div class="container is-fluid py-5">
-            <h1 class="title">
-              Multi-Output Player
-            </h1>
-            <div class="fas">
-
-            </div>
-
-            <div class="columns">
-              <div class="column">
-                <button disabled id="play" class="button is-primary">Play</button>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column is-1">
-                <h4>video</h4>
-              </div>
-              <div class="column is-2">
-                  <button id="open" class="button is-primary">Open Window</button>
-              </div>
-              <div class="column is-2">
-                <button disabled id="full" class="button is-primary">Full Screen</button>
-            </div>
-              <div class="column is-4">
-                Choose an audio device
-                <div class="field">
-                  <div class="control">
-                    <div class="select is-primary is-small">
-                      <select id='video-audio'>
-                      </select>
-                    </div>
+    <div class="container is-fluid py-5">
+        <div class="columns">
+          <div class="column">
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                  Main Control
+                </p>
+              </header>
+              <div class="card-content">
+                <div class="columns is-mobile is-multiline is-1">
+                  <div class="column is-one-quarter-mobile has-text-centered">
+                    <button disabled id="play" class="button is-primary w-100">
+                      <span class="icon is-small">
+                        <i class="icon-svg play"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered right-divider">
+                    <button disabled id="stop" class="button is-primary w-100">
+                      <span class="icon is-small">
+                        <i class="icon-svg stop"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered">
+                    <button disabled id="back-1" class="button is-primary pl-1 has-text-weight-bold has-text-black">
+                      1
+                      <span class="icon is-small ml-1">
+                        <i class="icon-svg backward"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered">
+                    <button disabled id="back-5" class="button is-primary pl-1 has-text-weight-bold has-text-black">
+                      5
+                      <span class="icon is-small ml-1">
+                        <i class="icon-svg backward"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered right-divider">
+                    <button disabled id="back-60" class="button is-primary pl-1 has-text-weight-bold has-text-black">
+                      60
+                      <span class="icon is-small ml-1">
+                        <i class="icon-svg backward"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered">
+                    <button disabled id="for-1" class="button is-primary pl-1 has-text-weight-bold has-text-black">
+                      1
+                      <span class="icon is-small ml-1">
+                        <i class="icon-svg forward"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered">
+                    <button disabled id="for-5" class="button is-primary pl-1 has-text-weight-bold has-text-black">
+                      5
+                      <span class="icon is-small ml-1">
+                        <i class="icon-svg forward"></i>
+                      </span>
+                    </button>
+                  </div>
+                  <div class="column is-one-quarter-mobile has-text-centered">
+                    <button disabled id="for-60" class="button is-primary pl-1 has-text-weight-bold has-text-black">
+                      60
+                      <span class="icon is-small ml-1">
+                        <i class="icon-svg forward"></i>
+                      </span>
+                    </button>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column is-1">
-                <h4>Audio</h4>
-              </div>
-              <div class="column is-4">
-                Choose an audio device
-                <div class="field">
-                  <div class="control">
-                    <div class="select is-primary is-small">
-                      <select id='eng-audio'>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="columns">
-              <div class="column">
-                <audio controls id="aud">
-                    <source src="../assests/media/1 - ESP.m4a">
-                    Your browser does not support the audio element.
-                </audio>
               </div>
             </div>
           </div>
+        </div>
+        <div class="columns">
+          <div class="column is-1">
+            <h4>video</h4>
+          </div>
+          <div class="column is-2">
+              <button id="open" class="button is-primary">Open Window</button>
+          </div>
+          <div class="column is-2">
+            <button disabled id="full" class="button is-primary">Full Screen</button>
+        </div>
+          <div class="column is-4">
+            Choose an audio device
+            <div class="field">
+              <div class="control">
+                <div class="select is-primary is-small">
+                  <select id='video-audio'>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-1">
+            <h4>Audio</h4>
+          </div>
+          <div class="column is-4">
+            Choose an audio device
+            <div class="field">
+              <div class="control">
+                <div class="select is-primary is-small">
+                  <select id='eng-audio'>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <audio controls id="aud">
+                <source src="../assests/media/1 - ESP.m4a">
+                Your browser does not support the audio element.
+            </audio>
+          </div>
+        </div>
+      </div>
     </body>
 </html>
