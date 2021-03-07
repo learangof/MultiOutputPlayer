@@ -34,7 +34,7 @@
             </p>
           </header>
           <div class="card-content">
-            <div class="columns is-mobile is-multiline is-1">
+            <div class="columns is-mobile is-multiline is-vcentered is-1">
               <div class="column is-one-quarter-mobile has-text-centered">
                 <button id="play" class="button is-primary w-100">
                   <span class="icon is-small">
@@ -63,7 +63,7 @@
                   </span>
                 </button>
               </div>
-              <div class="column is-one-quarter-mobile has-text-centered right-divider">
+              <div class="column is-one-quarter-mobile has-text-centered right-divider-dotted">
                 <button disabled id="back-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
                   <span class="icon is-small ml-1">
                     <i class="icon-svg backward-60"></i>
@@ -119,40 +119,88 @@
             </div>
           </header>
           <div class="card-content">
-            <div class="columns is-mobile is-multiline is-1">
+            <div class="columns is-vcentered is-mobile is-multiline is-1">
               <div class="column is-four-fifths"></div>
               <div class="column is-one-fifth">
-                <button id="" class="button is-info w-100">
-                  open window
+                <button id="" class="button is-info w-100 is-small is-rounded">
+                  Open Window
                 </button>
               </div>
-              <div class="column is-one-quarter-mobile has-text-centered">
+              <div class="column has-text-centered">
                 <button id="play" class="button is-primary w-100">
                   <span class="icon is-small">
                     <i class="icon-svg play"></i>
                   </span>
                 </button>
               </div>
-              <div class="column is-one-quarter-mobile has-text-centered">
+              <div class="column has-text-centered">
                 <button id="play" class="button is-primary w-100">
                   <span class="icon is-small">
                     <i class="icon-svg stop"></i>
                   </span>
                 </button>
               </div>
-              <div class="column is-one-quarter-mobile has-text-centered">
-                <div class="control">
-                  <input class="input" type="text" placeholder="Text input">
+              <div class="column is-three-quarters">
+                <!-- has-output-tooltip  -->
+                <input id="sliderWithValue" class="slider my-2 has-output is-fullwidth is-primary" min="0" max="100" value="0" step="1" type="range">
+                <output for="sliderWithValue">00:00:00</output> 
+              </div>
+              <div class="column is-one-quarter right-divider">
+                <div class="field is-horizontal">
+                  <div class="field-label is-small">
+                    <label class="label">Start at:</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input class="input has-text-centered" type="text" placeholder="00:00:00">
+                      </p>
+                      <p class="help">Type the time</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="column is-half">
-                <input id="sliderWithValue" class="slider has-output-tooltip is-fullwidth is-primary" min="0" max="100" value="50" step="1" type="range">
-                <output for="sliderWithValue">50</output> 
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button disabled id="back-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg backward-1"></i>
+                  </span>
+                </button>
               </div>
               <div class="column is-one-quarter-mobile has-text-centered">
-                <div class="control">
-                  <input class="input" type="text" placeholder="Text input">
-                </div>
+                <button disabled id="back-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg backward-5"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered right-divider-dotted">
+                <button disabled id="back-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg backward-60"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button disabled id="for-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg forward-1"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button disabled id="for-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg forward-5"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button disabled id="for-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg forward-60"></i>
+                  </span>
+                </button>
               </div>
             </div>
           </div>
