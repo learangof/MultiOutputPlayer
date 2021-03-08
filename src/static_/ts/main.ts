@@ -1,5 +1,7 @@
 import { init_buttons } from "./button.js"
 import { init_filesChoosers } from "./fileChooser.js"
+import bulmaSlider from "./bulma-slider/index.js"
+
 
 if(document.readyState == "loading") {
   // The document is still loading.
@@ -15,6 +17,7 @@ document.addEventListener('readystatechange', e => {
     case "complete":
       // The page is fully loaded.
       //console.log("ready");
+      bulmaSlider.attach();
       init_buttons();
       init_filesChoosers();
       break;

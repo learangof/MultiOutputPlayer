@@ -16,9 +16,9 @@ gulp.task('sass', function () {
 });
 
 gulp.task('ts', function () {
-    return gulp.src(root_input + 'ts/*.ts')
+    return gulp.src(root_input + 'ts/**/*.ts')
         .pipe(ts({
-            noImplicitAny: true,
+            noImplicitAny: false,
             esModuleInterop: true,
             target: "es6"
         }))
