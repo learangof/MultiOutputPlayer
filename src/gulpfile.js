@@ -14,17 +14,24 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(root_output))
     .pipe(refresh());
 });
-
+var tsProject = ts.createProject('tsconfig.json');
 gulp.task('ts', function () {
-    return gulp.src(root_input + 'ts/**/*.ts')
-        .pipe(ts({
-            noImplicitAny: false,
-            esModuleInterop: true,
-            target: "es6"
-        }))
-        .pipe(gulp.dest(root_output))
-        .pipe(refresh());
+    return gulp.src([root_input + 'ts/**/*.ts'])
+        .pipe(tsProject())
+        .pipe(gulp.dest(root_output));
 });
+// gulp.task('ts', function () {
+//     return gulp.src(root_input + 'ts/**/*.ts')
+//         .pipe(ts({
+//             noImplicitAny: false,
+//             esModuleInterop: true,
+//             allowJs: true,
+//             target: "es5",
+//             exclude: ["node_modules", "build", "dist", "ts/**/*.js", "ts/**/*.jsx"]
+//         }))
+//         .pipe(gulp.dest(root_output))
+//         .pipe(refresh());
+// });
 
 gulp.task('watch', function () {
     refresh.listen();
