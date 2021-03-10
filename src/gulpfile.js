@@ -16,7 +16,7 @@ gulp.task('sass', function () {
 });
 var tsProject = ts.createProject('tsconfig.json');
 gulp.task('ts', function () {
-    return gulp.src([root_input + 'ts/**/*.ts'])
+    return gulp.src([root_input + 'ts/**/*.ts',root_input + 'ts/**/*.js'])
         .pipe(tsProject())
         .pipe(gulp.dest(root_output));
 });

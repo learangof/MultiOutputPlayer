@@ -1,11 +1,16 @@
 {
     "compilerOptions": {
-        //"allowJs": true,
+        "allowJs": true,
         "esModuleInterop": true,
         "module": "ES6",
         "moduleResolution": "Node",
         "noImplicitAny": false,
+        "outDir": "./static/",
+        "paths": {
+            "@types/jquery": [ "./node_modules/@types/jquery/index.d.ts"]
+        },
         "resolveJsonModule": true,
         "target": "es6"
-    }
+    },
+    "include": ["./static_/"]
   }
