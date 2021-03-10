@@ -38,6 +38,7 @@ gulp.task('watch', function () {
     gulp.watch(root_input + "sass/**/*.scss", gulp.parallel(['sass']));
     gulp.watch(root_input + "sass/**/*.sass", gulp.parallel(['sass']));
     gulp.watch(root_input + "ts/**/*.ts", gulp.parallel(['ts']));
+    gulp.watch(root_input + "ts/**/*.js", gulp.parallel(['ts']));
     gulp.watch("./views/**/*.html").on("change", refresh.reload);
     gulp.watch("./assests/**").on("change", refresh.reload);
   });
