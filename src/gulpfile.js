@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var ts = require("gulp-typescript");
-var refresh = require('gulp-refresh')
+var refresh = require('gulp-refresh');
  
 sass.compiler = require('node-sass');
 
@@ -40,8 +40,7 @@ gulp.task('watch', function () {
     gulp.watch(root_input + "ts/**/*.ts", gulp.parallel(['ts']));
     gulp.watch("./views/**/*.html").on("change", refresh.reload);
     gulp.watch("./assests/**").on("change", refresh.reload);
-    gulp.watch("./*.json").on("change", refresh.reload);
   });
 
-gulp.task('default', gulp.parallel(['sass', 'ts', 'watch', ]));
+gulp.task('default', gulp.parallel(['sass', 'ts', 'watch']));
 gulp.task('prod', gulp.parallel(['sass', 'ts']));
