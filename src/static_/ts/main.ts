@@ -1,7 +1,5 @@
-//import * as $ from "./lib/jquery.min.js"
 import { init_buttons } from "./button.js";
 import { init_filesChoosers } from "./fileChooser.js";
-//import bulmaSlider from "./bulma-slider/index.js"
 import { init_slider } from "./slider.js";
 
 if(document.readyState == "loading") {
