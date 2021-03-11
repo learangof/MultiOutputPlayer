@@ -9,10 +9,8 @@
     "frame": true,
     "width": 800,
     "height": 800,
-    "min_width": 400,
-    "min_height": 400,
-    "max_width": 800,
-    "max_height": 800
+    "min_width": 800,
+    "min_height": 400
   },
   "keywords": [],
   "author": "",
