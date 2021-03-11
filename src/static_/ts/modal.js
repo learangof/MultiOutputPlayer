@@ -5,7 +5,7 @@ export function init_modal() {
         modal.toggleClass('is-active');
         $('html').toggleClass('is-clipped');
     }
-    $('#open-config').click(toggleModalClasses);
-    $('#close-config').click(toggleModalClasses); 
+    $('.open-config').click(toggleModalClasses);
+    $('.close-config').click(toggleModalClasses); 
 }
 
