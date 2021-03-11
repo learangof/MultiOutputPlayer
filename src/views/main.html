@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="../static/base.css" rel="stylesheet">
   <script src="../static/lib/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <script src="../static/main.js" type="module" defer></script>
 </head>
 
@@ -17,7 +18,7 @@
         Multi-Output Player
       </a>
       <div class="navbar-item">
-        <button class="button">
+        <button class="button" data-target="modal-config" aria-haspopup="true">
           <span class="icon is-small">
             <i class="icon settings"></i>
           </span>
@@ -142,7 +143,7 @@
               </div>
               <div class="column is-three-quarters">
                 <!-- has-output-tooltip  -->
-                <div id="slider2" class=""></div>
+                <div id="slider1" class="slider-jq"></div>
               </div>
               <div class="column is-one-quarter right-divider">
                 <div class="field is-horizontal">
@@ -246,7 +247,7 @@
           </div>
           <!-- Slider Time inside this column -->
           <div class="column is-three-quarters">
-            <div id="slider2" class=""></div>
+            <div id="slider2" class="slider-jq"></div>
           </div>
           <div class="column is-one-quarter right-divider">
             <div class="field is-horizontal">
@@ -306,6 +307,24 @@
             </button>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal-config" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Modal title</p>
+          <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+          <!-- Content ... -->
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
       </div>
     </div>
 
