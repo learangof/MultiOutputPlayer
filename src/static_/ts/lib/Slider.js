@@ -14,7 +14,6 @@
  * @class DraggableProgressbar
  * @param
  */
-console.log("jojo");
 export default class Slider {
     constructor({ width, height, backgroundColor, barColor, scale, Duration, formatProgress = false, alwayShowBall = false, hasBall = true, hasIndicator = true, ballColor, ballRadius, format, indicatorColor, indicatorTextColor }) {
         if (typeof Duration !== 'number')
