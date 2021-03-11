@@ -11,9 +11,8 @@ export function init_slider() {
     scale:'2',
     formatProgress: true
   };
-  let slider1 = new Slider(sliderDefault);
-  let slider2 = new Slider(sliderDefault);
-  $('#slider1').append(slider1.getSlider());
-  $('#slider2').append(slider2.getSlider());
+  $(".slider-jq").each(function (index) { 
+    this.append(new Slider(sliderDefault).getSlider()[0]);
+  });
 }
 
