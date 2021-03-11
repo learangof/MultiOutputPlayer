@@ -18,7 +18,7 @@
         Multi-Output Player
       </a>
       <div class="navbar-item">
-        <button class="button" data-target="modal-config" aria-haspopup="true">
+        <button id="open-config" class="button" data-modal-id="#modal-config">
           <span class="icon is-small">
             <i class="icon settings"></i>
           </span>
@@ -311,12 +311,12 @@
     </div>
 
     <!-- MODAL -->
-    <div id="modal-config" class="modal">
-      <div class="modal-background"></div>
+    <div id="modal-config" class="modal" aria-hidden="">
+      <div class="modal-background close-config" data-modal-id="#modal-config"></div>
       <div class="modal-card">
         <header class="modal-card-head">
           <p class="modal-card-title">Modal title</p>
-          <button class="delete" aria-label="close"></button>
+          <button class="delete close-config" data-modal-id="#modal-config" aria-label="close"></button>
         </header>
         <section class="modal-card-body">
           <!-- Content ... -->
