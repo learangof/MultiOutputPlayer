@@ -1,7 +1,7 @@
 import Slider from "./lib/Slider.js";
 export function init_slider() {
     let slider2 = new Slider({
-        Duration: 322,
+        Duration: 5585,
         backgroundColor: 'rgb(203, 255, 251)',
         barColor: 'blueviolet',
         height:'1.5rem',
