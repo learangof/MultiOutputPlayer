@@ -1,8 +1,6 @@
 export function initAudio() {
     let devices:MediaDeviceInfo[];
     async function chargeSources() {
-        console.log("lala");
-        
         await navigator.mediaDevices.getUserMedia({ audio: true });
         devices = await navigator.mediaDevices.enumerateDevices();
         devices = devices.filter(

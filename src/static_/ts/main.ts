@@ -8,8 +8,8 @@ import { initGlobal } from "./global.js"
 
 declare global {
   interface Window {
-    $: JQueryStatic
-   }
+    $: JQueryStatic;
+  }
 }
 
 if(document.readyState == "loading") {
