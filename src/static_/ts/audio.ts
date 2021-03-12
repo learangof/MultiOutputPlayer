@@ -1,5 +1,5 @@
 export function initAudio() {
-    let devices;
+    let devices:MediaDeviceInfo[];
     async function chargeSources() {
         console.log("lala");
         
