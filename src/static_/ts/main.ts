@@ -4,6 +4,12 @@ import { init_slider } from "./slider.js";
 import { init_modal } from "./modal.js"
 import { initGlobal } from "./global.js"
 
+declare global {
+  interface Window {
+    $: JQueryStatic
+   }
+}
+
 if(document.readyState == "loading") {
   // The document is still loading.
   //console.log("loading");
