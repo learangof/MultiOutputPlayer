@@ -38,7 +38,7 @@ export function init_buttons() {
       video.webkitRequestFullscreen();
     } else if (video.msRequestFullscreen) {/* IE11 */
       video.msRequestFullscreen();
-    }else if (video.mozRequestFullScreen) {
+    }else if (video.mozRequestFullScreen) {/* Mozilla */
       video.mozRequestFullScreen();
     }
     fullScreenButton.html("Close Full Screen");

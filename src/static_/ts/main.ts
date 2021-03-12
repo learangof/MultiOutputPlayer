@@ -2,6 +2,8 @@ import { init_buttons } from "./button.js";
 import { init_filesChoosers } from "./fileChooser.js";
 import { init_slider } from "./slider.js";
 import { init_modal } from "./modal.js"
+import { initAudio } from "./audio.js"
+
 import { initGlobal } from "./global.js"
 
 declare global {
@@ -28,6 +30,7 @@ document.addEventListener('readystatechange', e => {
       init_slider();
       init_buttons();
       init_filesChoosers();
+      initAudio();
       initGlobal();
       break;
   }
