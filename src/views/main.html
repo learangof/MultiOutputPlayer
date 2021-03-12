@@ -336,51 +336,46 @@
         </header>
         <section class="modal-card-body">
         <!-- Content ... -->
-        <div class="content">
-          <div class="columns mt-5">
-            <div class="column is-1">
-              <h4>video</h4>
-            </div>
-            <div class="column is-2">
-              <button id="open" class="button is-primary">Open Window</button>
-            </div>
-            <div class="column is-2">
-              <button disabled id="full" class="button is-primary">Full Screen</button>
-            </div>
-            <div class="column is-4">
-              Choose an audio device
-              <div class="field">
-                <div class="control">
-                  <div class="select is-primary is-small">
-                    <select id='video-audio'>
-                    </select>
-                  </div>
+        <div class="container m-0">
+          <div class="tabs is-boxed">
+            <ul>
+              <li class="is-active"><a>Audio</a></li>
+              <li><a>Video</a></li>
+              <li><a>Subtitle</a></li>
+            </ul>
+          </div>
+          <div class="container">
+            <!-- Video Output -->
+            <div id="" class="columns is-vcentered px-2 my-0">
+              <div class="column is-one-fifth pr-0">
+                Video Output:
+              </div>
+              <div class="column is-three-fifth">
+                <div class="select w-100">
+                  <select class="w-100 audio-source">
+                  </select>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="columns">
-            <div class="column is-1">
-              <h4>Audio</h4>
-            </div>
-            <div class="column is-4">
-              Choose an audio device
-              <div class="field">
-                <div class="control">
-                  <div class="select is-primary is-small">
-                    <select id='eng-audio'>
-                    </select>
-                  </div>
-                </div>
+              <div class="column is-one-fifth">
+                <a class="button w-100">Live</a>
               </div>
             </div>
-          </div>
-          <div class="columns">
-            <div class="column">
-              <audio controls id="aud">
-                <source src="../assests/media/1 - ESP.m4a">
-                Your browser does not support the audio element.
-              </audio>
+
+            <div class="bottom-divier"></div>
+            <!-- Eng Audio Output -->
+            <div id="" class="columns is-vcentered px-2 my-0">
+              <div class="column is-one-fifth pr-0">
+                English Output:
+              </div>
+              <div class="column is-three-fifth">
+                <div class="select w-100">
+                  <select class="w-100 audio-source">
+                  </select>
+                </div>
+              </div>
+              <div class="column is-one-fifth">
+                <a class="button w-100">Live</a>
+              </div>
             </div>
           </div>
         </div>
