@@ -6,13 +6,54 @@
         <link href="../styles/tailwind.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container mx-auto">     
-            <div class="flex flex-row ...">
-                <div class="box-content h-32 w-32 p-4 mx-2 border-4">1</div>
-                <div class="box-border h-32 w-32 p-4 mx-2 border-4">2</div>
-                
-                <div class="box-border h-32 w-32 p-4 mx-2 border-4">3</div>
+
+        section:
+          <div class="columns mt-5">
+            <div class="column is-1">
+              <h4>video</h4>
             </div>
-        </div>
+            <div class="column is-2">
+              <button id="open" class="button is-primary">Open Window</button>
+            </div>
+            <div class="column is-2">
+              <button disabled id="full" class="button is-primary">Full Screen</button>
+            </div>
+            <div class="column is-4">
+              Choose an audio device
+              <div class="field">
+                <div class="control">
+                  <div class="select is-primary is-small">
+                    <select id='video-audio'>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column is-1">
+              <h4>Audio</h4>
+            </div>
+            <div class="column is-4">
+              Choose an audio device
+              <div class="field">
+                <div class="control">
+                  <div class="select is-primary is-small">
+                    <select id='eng-audio'>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="columns">
+            <div class="column">
+              <audio controls id="aud">
+                <source src="../assests/media/1 - ESP.m4a">
+                Your browser does not support the audio element.
+              </audio>
+            </div>
+          </div>
+
     </body>
 </html>
