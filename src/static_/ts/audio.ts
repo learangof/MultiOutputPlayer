@@ -1,7 +1,8 @@
 export function initAudio() {
     let devices;
-    let audioSources = {};
-    (async () => {
+    async function chargeSources() {
+        console.log("lala");
+        
         await navigator.mediaDevices.getUserMedia({ audio: true });
         devices = await navigator.mediaDevices.enumerateDevices();
         devices = devices.filter(
@@ -12,17 +13,15 @@ export function initAudio() {
         );
         
         $(".audio-source").each(function (sourceIndex:Number, element:HTMLSelectElement) {
-            console.log(sourceIndex);
-            console.log(element);
+            element.innerHTML = "";
             devices.forEach(function (item:MediaDeviceInfo, deviceIndex:Number) {
-                console.log(deviceIndex);
-                console.log(item);
                 var option = document.createElement("option");
                 option.textContent = item.label;
                 option.value = String(deviceIndex);
                 element.add(option);
             });
         });
-    })();
-
+    };    
+    chargeSources();
+    $("#refresh-sources").click(chargeSources);
 }
