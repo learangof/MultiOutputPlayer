@@ -1,12 +1,22 @@
 export function init_buttons() {
   function openWindow() {
-    let childWindow: Window;
-    this.disabled = true;
-    let windowFeatures: string =
-      "new_instance=yes, toolbar=no, titlebar=no, scrollbars=no";
+    let childWindow:Window;
+    let button:HTMLButtonElement = this;
+    let windowFeatures:string = "new_instance=yes, toolbar=no, titlebar=no, scrollbars=no";
+    let isOpen:boolean = false;
+
+    button.disabled = true;
+
     childWindow = window.open("video.html", "Video", windowFeatures);
+    childWindow.onunload = closeWindow;
+    childWindow.onbeforeunload = closeWindow;
+    
+    function closeWindow(event:Event){
+      //event.preventDefault();
+      (isOpen) ? button.disabled = false : isOpen = true;
+    }
   }
-  document.querySelector("#open").addEventListener("click", openWindow);
+  $("#open-video").click(openWindow);
 }
 
 // var childWindow;
