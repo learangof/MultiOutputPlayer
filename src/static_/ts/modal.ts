@@ -1,7 +1,8 @@
 export function init_modal() {
-    function toggleModalClasses(event) {
-        let modalId = event.currentTarget.dataset.modalId;
-        let modal = $(modalId);
+    function toggleModalClasses(event:Event) {
+        let target:HTMLElement = <HTMLElement>event.currentTarget;
+        let modalId:String = target.dataset.modalId;
+        let modal:JQuery = $(modalId);
         modal.toggleClass('is-active');
         $('html').toggleClass('is-clipped');
     }
