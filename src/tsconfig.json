@@ -5,7 +5,7 @@
         "module": "ES6",
         "moduleResolution": "Node",
         "noImplicitAny": false,
-        "composite": true,
+        //"composite": true,
         "outDir": "./static/",
         "paths": {
             "@types/jquery": [ "./node_modules/@types/jquery/index.d.ts"]
