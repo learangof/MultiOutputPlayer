@@ -79,6 +79,10 @@ export function init_buttons() {
   openButton.click(openWindow);
   fullScreenButton.click(fullScreenVideo);
 }
+
 export function getChildWindow() {
   return childWindow;
+}
+export function ableOpenButton() {
+  $("#open-video").prop("disabled", false); 
 }
