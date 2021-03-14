@@ -1,5 +1,5 @@
+let childWindow:Window;
 export function init_buttons() {
-  let childWindow:Window;
   let openButton:JQuery = $("#open-video");
   let fullScreenButton:JQuery = $("#fullscreen-video");
   
@@ -78,4 +78,7 @@ export function init_buttons() {
 
   openButton.click(openWindow);
   fullScreenButton.click(fullScreenVideo);
+}
+export function getChildWindow() {
+  return childWindow;
 }
