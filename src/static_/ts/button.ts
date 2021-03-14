@@ -2,6 +2,7 @@ let childWindow:Window;
 export function init_buttons() {
   let openButton:JQuery = $("#open-video");
   let fullScreenButton:JQuery = $("#fullscreen-video");
+  let isFullScreen:boolean = false;
   
   function openWindow() {   
     let windowFeatures:string = "new_instance=yes, toolbar=no, titlebar=no, scrollbars=no";
@@ -31,6 +32,7 @@ export function init_buttons() {
     toogleCloseWindow(); 
   }
   function fullScreenVideo() {
+    isFullScreen = true;
     let video:any = childWindow.document.getElementById("video");
     if (video.requestFullscreen) {
       video.requestFullscreen();
@@ -73,7 +75,9 @@ export function init_buttons() {
     openButton.click(openWindow)
     toggleClassButtons(openButton);
     fullScreenButton.prop("disabled", true); 
-    closeFullScreenVideo();
+    if (isFullScreen) {
+      closeFullScreenVideo();
+    }    
   }
 
   openButton.click(openWindow);
