@@ -1,4 +1,6 @@
 let childWindow:Window;
+export let files:File[] = [null,null];
+
 export function init_buttons() {
   let openButton:JQuery = $("#open-video");
   let fullScreenButton:JQuery = $("#fullscreen-video");
@@ -8,7 +10,6 @@ export function init_buttons() {
     let windowFeatures:string = "new_instance=yes, toolbar=no, titlebar=no, scrollbars=no";
     let isOpen:boolean = false;
 
-    //openButton.prop("disabled", true);
     openButton.html("Close Window");
     openButton.off('click');
     openButton.click(closeWindow)
@@ -18,7 +19,16 @@ export function init_buttons() {
     childWindow = window.open("video.html", "Video", windowFeatures);
     childWindow.onunload = closeWindowHandler;
     childWindow.onbeforeunload = closeWindowHandler;
-    
+
+    childWindow.onload = function() {      
+      let url:string = URL.createObjectURL(files[0])
+      let player:HTMLVideoElement = childWindow.document.querySelector("#video");
+      let playerSrc:HTMLSourceElement = player.querySelector("source");
+      
+      playerSrc.setAttribute('src', url);
+      player.load();
+    };
+
     function closeWindowHandler(){
       //event.preventDefault();
       if (isOpen) {
@@ -84,9 +94,6 @@ export function init_buttons() {
   fullScreenButton.click(fullScreenVideo);
 }
 
-export function getChildWindow() {
-  return childWindow;
-}
 export function ableOpenButton() {
   $("#open-video").prop("disabled", false); 
 }
