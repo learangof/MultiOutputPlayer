@@ -1,7 +1,5 @@
-import { getChildWindow, ableOpenButton } from "./button.js";
+import { ableOpenButton, files } from "./button.js";
 
-let video:File;
-let audio:File;
 export function init_filesChoosers() {
   const fileVideoInput: JQuery = $("#video input[type=file]");
   const fileAudioInput: JQuery = $("#audio input[type=file]");
@@ -9,18 +7,11 @@ export function init_filesChoosers() {
   fileAudioInput.on("change",{ isVideo: false },changeName);
 
   function changeName(isVideo) {
-    console.log(this);
     if (this.files.length > 0) {
       const fileName: JQuery = $(this).siblings('.file-name');
-      console.log(fileName);
       fileName.html(this.files[0].name);
       (isVideo)? ableOpenButton() : "";
-      (isVideo)? video = this.files[0] : audio = this.files[0];
+      (isVideo)? files[0] = this.files[0] : files[1] = this.files[0];
     }
   }
-}
-export function getFile(type:string) {
-  let file:File;
-  (type == 'video')? file = video : file = audio;
-  return file; 
 }
