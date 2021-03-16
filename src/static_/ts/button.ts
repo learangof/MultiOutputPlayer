@@ -1,7 +1,10 @@
-let childWindow:Window;
+import { setVideo } from "./fileChooser.js"
+
+
 export let files:File[] = [null,null];
 
 export function init_buttons() {
+  let childWindow:Window;
   let openButton:JQuery = $("#open-video");
   let fullScreenButton:JQuery = $("#fullscreen-video");
   let isFullScreen:boolean = false;
@@ -21,12 +24,7 @@ export function init_buttons() {
     childWindow.onbeforeunload = closeWindowHandler;
 
     childWindow.onload = function() {      
-      let url:string = URL.createObjectURL(files[0])
-      let player:HTMLVideoElement = childWindow.document.querySelector("#video");
-      let playerSrc:HTMLSourceElement = player.querySelector("source");
-      
-      playerSrc.setAttribute('src', url);
-      player.load();
+      setVideo(childWindow.document.querySelector("#video"));
     };
 
     function closeWindowHandler(){
