@@ -3,6 +3,7 @@ import { init_filesChoosers } from "./fileChooser.js";
 import { init_slider } from "./slider.js";
 import { init_modal } from "./modal.js"
 import { initAudio } from "./audio.js"
+import { initPlayer } from "./player.js"
 
 import { initGlobal } from "./global.js"
 
@@ -26,12 +27,13 @@ document.addEventListener('readystatechange', e => {
     case "complete":
       // The page is fully loaded.
       //console.log("ready");
+      initGlobal();
+      initAudio();
+      initPlayer();
       init_modal();
       init_slider();
-      init_buttons();
       init_filesChoosers();
-      initAudio();
-      initGlobal();
+      init_buttons();
       break;
   }
 });
