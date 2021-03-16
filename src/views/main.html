@@ -49,7 +49,7 @@
       <div class="card-content">
         <div class="columns is-mobile is-multiline is-vcentered is-1">
           <div class="column is-one-quarter-mobile has-text-centered">
-            <button id="play" class="button is-primary w-100">
+            <button id="play-all" class="button is-primary w-100">
               <span class="icon is-small">
                 <i class="icon-svg play"></i>
               </span>
@@ -144,7 +144,7 @@
                 </button>
               </div>
               <div class="column has-text-centered">
-                <button id="play" class="button is-primary w-100">
+                <button id="play-video" class="button is-primary w-100">
                   <span class="icon is-small">
                     <i class="icon-svg play"></i>
                   </span>
@@ -221,7 +221,6 @@
             </div>
           </div>
     </div>
-
     <!-- Third/so on Card -->
     <div class="card">
       <header class="card-header">
@@ -247,8 +246,14 @@
       </header>
       <div class="card-content">
         <div class="columns is-vcentered is-mobile is-multiline is-1">
+          <div class="column is-full">
+            <audio controls id="aud">
+              <source src="../assests/media/1 - ESP.m4a">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
           <div class="column has-text-centered">
-            <button id="play" class="button is-primary w-100">
+            <button id="play-audio" class="button is-primary w-100">
               <span class="icon is-small">
                 <i class="icon-svg play"></i>
               </span>
