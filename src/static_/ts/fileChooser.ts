@@ -3,8 +3,8 @@ import { ableOpenButton } from "./button.js";
 let videoSource:File;
 let audioSource:File;
 export function init_filesChoosers() {
-  const fileVideoInput: JQuery = $("#video input[type=file]");
-  const fileAudioInput: JQuery = $("#audio input[type=file]");
+  const fileVideoInput: JQuery = $("#video-file input[type=file]");
+  const fileAudioInput: JQuery = $("#audio-file input[type=file]");
   fileVideoInput.on("change",{ isVideo: true },changeName);
   fileAudioInput.on("change",{ isVideo: false },changeName);
 
@@ -18,14 +18,23 @@ export function init_filesChoosers() {
         ableOpenButton();
         videoSource = this.files[0]; 
       } else {
-        audioSource = this.file[0];
+        audioSource = this.files[0];
+        setAudio();
       }
     }
   }
 }
 export function setVideo(player:HTMLVideoElement) {
-    let url:string = URL.createObjectURL(videoSource)
+    let url:string = URL.createObjectURL(videoSource);
     let playerSrc:HTMLSourceElement = player.querySelector("source");
     playerSrc.setAttribute('src', url);
     player.load();
+}
+
+function setAudio() {
+  let url:string = URL.createObjectURL(audioSource)
+  let player:HTMLAudioElement =document.querySelector("#audio")
+  let playerSrc:HTMLSourceElement = player.querySelector("source");
+  playerSrc.setAttribute('src', url);
+  player.load();
 }
