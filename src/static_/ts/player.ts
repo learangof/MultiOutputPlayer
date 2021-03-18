@@ -1,3 +1,5 @@
+import { setDuration } from "./slider.js"
+
 export function initPlayer() {
     initMainControls();
     initVideoControls();
@@ -18,5 +20,6 @@ function play(event:Event, sources:JSON) {
     let target:HTMLElement = <HTMLElement>event.currentTarget;
     let playerId:String = target.dataset.for;
     let player:HTMLMediaElement = <HTMLMediaElement>$(playerId)[0];
-    (player.paused)?player.play():player.pause();
+    //(player.paused)?player.play():player.pause();
+    setDuration(player.duration,playerId)    
 }
