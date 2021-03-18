@@ -263,14 +263,17 @@ export default class Slider {
     setCurrent(progress) {
         if (typeof progress !== 'number')
             throw 'expected a number';
-        if (progress > 1 || progress < 0)
-            throw 'parameter should range from 0 to 1';
-        this.bar.css('width', `${progress * 100}%`);
+        if (progress > this.Duration || progress < 0)
+            throw 'parameter should range from 0 to '+this.Duration;
+        this.currentTime.text(this.format(progress));
+        progress = (progress / this.Duration * 100);
+        this.bar.css('width', `${progress}%`);
     }
     setDuration(duration) {
         if (typeof duration !== 'number')
             throw 'expected a number';
-        this.duration = duration;
+        this.Duration = duration;
+        this.duration.text(this.format(this.Duration));
     }
     getPercent(event) {
         let offsetX = this.progressbar.offset().left;
