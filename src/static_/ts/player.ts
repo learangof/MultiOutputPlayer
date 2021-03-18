@@ -1,25 +1,36 @@
-import { setDuration } from "./slider.js"
-
+import { setDuration, setCurrentTime } from "./slider.js"
 export function initPlayer() {
     initMainControls();
     initVideoControls();
     initAudioControls();
 }
 function initMainControls() {
-    $("#play-all").click(play)
+   // $("#play-all").click(play)
 }
 function initVideoControls() {
-    $("#play-video").click(play)
+   // $("#play-video").click(play)
 }
 function initAudioControls() {
-    $("#play-audio").click(play)
+    let name = '#audio';
+    $('button[data-for="'+name+'"').each(function (index){
+        $(this).click(function (event:Event) {
+            EVENTS[this.id](this, name, <HTMLMediaElement>$(name)[0]);
+        });
+    });
 }
-function play(event:Event, sources:JSON) {
-    $(this).find("i").toggleClass("play");
-    $(this).find("i").toggleClass("pause");
-    let target:HTMLElement = <HTMLElement>event.currentTarget;
-    let playerId:String = target.dataset.for;
-    let player:HTMLMediaElement = <HTMLMediaElement>$(playerId)[0];
-    //(player.paused)?player.play():player.pause();
-    setDuration(player.duration,playerId)    
-}
+const EVENTS = {
+    play(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+        $(btn).find("i").toggleClass("play");
+        $(btn).find("i").toggleClass("pause");
+        setDuration(player.duration, playerId);
+        player.paused ? player.play() : player.pause();
+        player.addEventListener("timeupdate", (event: Event) => {
+            //TODO: improve to add the event just one time
+            setCurrentTime(player.currentTime, playerId);
+        });
+    },
+    stop(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+        (!player.paused)?this.play($("button#play[data-for='"+playerId+"'")[0], playerId, player):'';
+        player.currentTime = 0;
+    }
+};
