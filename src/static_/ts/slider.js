@@ -21,3 +21,6 @@ export function init_slider() {
 export function setDuration(duration, sliderFor) {
   sliders[sliderFor].setDuration(duration);
 }
+export function setCurrentTime(progress, sliderFor) {
+  sliders[sliderFor].setCurrent(progress);
+}
