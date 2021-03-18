@@ -15,14 +15,9 @@ export function init_slider() {
   $(".slider-jq").each(function (index) { 
     let sliderFor = this.dataset.for;
     sliders[sliderFor] = new Slider(sliderDefault);
-    updateSlider(this,sliders[sliderFor]);
+    this.append(sliders[sliderFor].getSlider()[0])
     });
 }
 export function setDuration(duration, sliderFor) {
-  sliders[sliderFor].Duration = duration;
-  updateSlider($(".slider-jq[data-for='"+ sliderFor +"']")[0],sliders[sliderFor]);
-}
-function updateSlider(slider, data) {
-  $(slider).html("");
-  slider.append(data.getSlider()[0]);
+  sliders[sliderFor].setDuration(duration);
 }
