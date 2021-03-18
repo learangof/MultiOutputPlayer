@@ -1,4 +1,4 @@
-import { setDuration, setCurrentTime } from "./slider.js"
+import { setCurrentTime } from "./slider.js"
 export function initPlayer() {
     initMainControls();
     initVideoControls();
@@ -14,7 +14,7 @@ function initAudioControls() {
     let name = '#audio';
     $('button[data-for="'+name+'"').each(function (index){
         $(this).click(function (event:Event) {
-            EVENTS[this.id](this, name, <HTMLMediaElement>$(name)[0]);
+            EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
         });
     });
 }
@@ -22,15 +22,31 @@ const EVENTS = {
     play(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
         $(btn).find("i").toggleClass("play");
         $(btn).find("i").toggleClass("pause");
-        setDuration(player.duration, playerId);
-        player.paused ? player.play() : player.pause();
-        player.addEventListener("timeupdate", (event: Event) => {
-            //TODO: improve to add the event just one time
-            setCurrentTime(player.currentTime, playerId);
-        });
+        if (player.paused) {
+            player.play();
+            $(player).on("timeupdate", (event: Event) => {
+                setCurrentTime(player.currentTime, playerId);
+            });
+        } else {
+            player.pause();
+            $(player).off( "timeupdate", "**" );
+        }
     },
     stop(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
-        (!player.paused)?this.play($("button#play[data-for='"+playerId+"'")[0], playerId, player):'';
+        if (!player.paused) {
+            this.play($("button#play[data-for='"+playerId+"'")[0], playerId, player);
+            $(player).off( "timeupdate", "**" );
+        }
         player.currentTime = 0;
+    },
+    for(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+        let forTime:number = parseInt(btn.id.split('-')[1]);
+        player.currentTime += forTime;
+        setCurrentTime(player.currentTime, playerId);
+    },
+    back(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+        let forTime:number = parseInt(btn.id.split('-')[1]);
+        player.currentTime -= forTime;        
+        setCurrentTime(player.currentTime, playerId);
     }
 };
