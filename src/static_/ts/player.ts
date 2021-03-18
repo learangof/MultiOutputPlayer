@@ -12,7 +12,11 @@ function initVideoControls() {
 function initAudioControls() {
     $("#play-audio").click(play)
 }
-function play(sources:JSON) {
+function play(event:Event, sources:JSON) {
     $(this).find("i").toggleClass("play");
     $(this).find("i").toggleClass("pause");
+    let target:HTMLElement = <HTMLElement>event.currentTarget;
+    let playerId:String = target.dataset.for;
+    let player:HTMLMediaElement = <HTMLMediaElement>$(playerId)[0];
+    (player.paused)?player.play():player.pause();
 }
