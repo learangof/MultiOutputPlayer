@@ -51,8 +51,8 @@ const EVENTS = {
     }
 };
 $(".input[data-for='#audio']").on('input', function (){
-    let input:string = <string>this.value;
-    if (input.match(/[\D]/)) {
-        console.log("match")
+    let input:string = <string>this.value.slice(-1);
+    if (input.match(/[^:\d]/)) {
+        this.value = this.value.slice(0,-1);        
     }
 });
