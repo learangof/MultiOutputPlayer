@@ -23,9 +23,14 @@ const EVENTS = {
         $(btn).find("i").toggleClass("play");
         $(btn).find("i").toggleClass("pause");
         if (player.paused) {
+            let $player:JQuery = $(player);
             player.play();
-            $(player).on("timeupdate", (event: Event) => {
+            $player.on("timeupdate", (event: Event) => {
                 setCurrentTime(player.currentTime, playerId);
+            });
+            $player.on("ended", function(){
+                $(btn).find("i").toggleClass("play");
+                $(btn).find("i").toggleClass("pause");
             });
         } else {
             player.pause();
