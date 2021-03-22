@@ -50,3 +50,9 @@ const EVENTS = {
         setCurrentTime(player.currentTime, playerId);
     }
 };
+$(".input[data-for='#audio']").on('input', function (){
+    let input:string = <string>this.value;
+    if (input.match(/[\D]/)) {
+        console.log("match")
+    }
+});
