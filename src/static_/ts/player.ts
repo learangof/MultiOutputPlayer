@@ -82,8 +82,6 @@ $(".input[data-for='#audio']").on('keyup', function (event:any) {
     }
     input = <string>$this.val();
     //TODO autoformaring to fufill always 00:00:00 format
-    let time:string[] = input.split(':');
-    
     input = input.replace(/[\D\s\._\-]+/g, "");
     // let inputArray:string[] = Array.from(input);
     // input = "";
@@ -91,10 +89,14 @@ $(".input[data-for='#audio']").on('keyup', function (event:any) {
     //     (inputArray[index])? input += inputArray[index] : input += "0"; 
     // }
     // console.log(input);
-    
     input = input.replace(/\d{2}/g, "$&:");
-    (input.length > 8 )? input = input.slice(0,8) : '';    
-    
+    ((input.length == 3 && input.slice(-1) == ":") || (input.length == 6 && input.slice(-1) == ":"))? input = input.slice(0,-1) : '';
+    (input.length > 8)? input = input.slice(0,8) : '';    
+    let inputArray:string[] = input.split(':');
+    let time:number;    
+   // (inputArray[0])? 
+    (inputArray[1])? console.log(inputArray[1]) : '';
+
     $this.val(function () {        
         return input;
     });
