@@ -2,14 +2,21 @@ import { setCurrentTime } from "./slider.js"
 let startAt:JSON = JSON.parse('{}');
 export function initPlayer() {
     initMainControls();
-    initVideoControls();
     initAudioControls();
 }
 function initMainControls() {
    // $("#play-all").click(play)
 }
-function initVideoControls() {
-   // $("#play-video").click(play)
+export function initVideoControls(videoPlayer:HTMLMediaElement) {
+    let name = '#video';
+    $('button[data-for="'+name+'"').each(function (index){
+        $(this).click(function (event:Event) {
+            EVENTS[this.id.split('-')[0]](this, name, videoPlayer);
+        });
+    });
+    $(".input[data-for='"+name+"']").on('keyup',function(event:any){
+        EVENTS[this.id](this, event)
+    });   
 }
 function initAudioControls() {
     let name = '#audio';

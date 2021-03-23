@@ -1,7 +1,9 @@
 import { setVideo } from "./fileChooser.js"
+import { initVideoControls } from "./player.js"
 
 
 export let files:File[] = [null,null];
+export let videoPlayer:HTMLVideoElement;
 
 export function init_buttons() {
   let childWindow:Window;
@@ -23,8 +25,10 @@ export function init_buttons() {
     childWindow.onunload = closeWindowHandler;
     childWindow.onbeforeunload = closeWindowHandler;
 
-    childWindow.onload = function() {      
-      setVideo(childWindow.document.querySelector("#video"));
+    childWindow.onload = function() {     
+      videoPlayer = childWindow.document.querySelector("#video");
+      setVideo(videoPlayer);
+      initVideoControls(videoPlayer);
     };
 
     function closeWindowHandler(){
