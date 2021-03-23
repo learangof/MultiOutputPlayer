@@ -14,7 +14,6 @@ function initVideoControls() {
 function initAudioControls() {
     let name = '#audio';
     $('button[data-for="'+name+'"').each(function (index){
-        startAt[name] = 0;
         $(this).click(function (event:Event) {
             EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
         });
@@ -24,7 +23,23 @@ const EVENTS = {
     play(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
         $(btn).find("i").toggleClass("play");
         $(btn).find("i").toggleClass("pause");
+        
         if (player.paused) {
+            if(startAt[playerId]){
+                switch (startAt[playerId].length) {
+                    case 1:
+                        player.currentTime = parseInt(startAt[playerId][0]);
+                        break;
+                    case 2:
+                        player.currentTime = (startAt[playerId][0]*60) + parseInt(startAt[playerId][1]);
+                        break;
+                    case 3:
+                        player.currentTime = (startAt[playerId][0]* 3600)+ (startAt[playerId][1] * 60) + parseInt(startAt[playerId][2]);
+                        break;
+                }
+            }else{
+                player.currentTime = 0;
+            }
             let $player:JQuery = $(player);
             player.play();
             $player.on("timeupdate", (event: Event) => {
@@ -92,6 +107,15 @@ $(".input[data-for='#audio']").on('keyup', function (event:any) {
     input = input.replace(/\d{2}/g, "$&:");
     ((input.length == 3 && input.slice(-1) == ":") || (input.length == 6 && input.slice(-1) == ":"))? input = input.slice(0,-1) : '';
     (input.length > 8)? input = input.slice(0,8) : '';
+    //TODO Check numbers is limit to 59 to avoi 80seconds or 90minutes so on
+    // let inputArray:string[] = input.split(':');
+    // input = ""
+    // inputArray.forEach(function(ele){
+    //     let num:number = parseInt(ele);
+    //     (num > 59)? num = 59 : '';
+    //     input += num;
+    // });
+    // input = input.replace(/\d{2}/g, "$&:");
     startAt[this.dataset.for] = input.split(':');
     
     $this.val(function () {        
