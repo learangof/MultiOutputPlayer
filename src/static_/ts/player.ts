@@ -57,6 +57,7 @@ const EVENTS = {
         setCurrentTime(player.currentTime, playerId);
     }
 };
+
 $(".input[data-for='#audio']").on('keyup', function (event:any) {
 
     let selection:string = window.getSelection().toString();
@@ -80,13 +81,19 @@ $(".input[data-for='#audio']").on('keyup', function (event:any) {
         return;
     }
     input = <string>$this.val();
-    
     //TODO autoformaring to fufill always 00:00:00 format
     let time:string[] = input.split(':');
     
     input = input.replace(/[\D\s\._\-]+/g, "");
+    // let inputArray:string[] = Array.from(input);
+    // input = "";
+    // for (let index = 0; index < 6; index++) {
+    //     (inputArray[index])? input += inputArray[index] : input += "0"; 
+    // }
+    // console.log(input);
+    
     input = input.replace(/\d{2}/g, "$&:");
-    (input.length > 8 )? input = input.slice(0,8) : '';
+    (input.length > 8 )? input = input.slice(0,8) : '';    
     
     $this.val(function () {        
         return input;

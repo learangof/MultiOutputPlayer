@@ -10,6 +10,7 @@
         "paths": {
             "@types/jquery": [ "./node_modules/@types/jquery/index.d.ts"]
         },
+        "removeComments": true,
         "resolveJsonModule": true,
         "target": "es6"
     },
