@@ -91,12 +91,9 @@ $(".input[data-for='#audio']").on('keyup', function (event:any) {
     // console.log(input);
     input = input.replace(/\d{2}/g, "$&:");
     ((input.length == 3 && input.slice(-1) == ":") || (input.length == 6 && input.slice(-1) == ":"))? input = input.slice(0,-1) : '';
-    (input.length > 8)? input = input.slice(0,8) : '';    
-    let inputArray:string[] = input.split(':');
-    let time:number;    
-   // (inputArray[0])? 
-    (inputArray[1])? console.log(inputArray[1]) : '';
-
+    (input.length > 8)? input = input.slice(0,8) : '';
+    startAt[this.dataset.for] = input.split(':');
+    
     $this.val(function () {        
         return input;
     });
