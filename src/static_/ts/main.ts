@@ -3,7 +3,7 @@ import { init_filesChoosers } from "./fileChooser.js";
 import { init_slider } from "./slider.js";
 import { init_modal } from "./modal.js"
 import { initAudio } from "./audio.js"
-import { initPlayer } from "./player.js"
+import { initPlayers } from "./player.js"
 
 import { initGlobal } from "./global.js"
 
@@ -29,7 +29,7 @@ document.addEventListener('readystatechange', e => {
       //console.log("ready");
       initGlobal();
       initAudio();
-      initPlayer();
+      initPlayers();
       init_modal();
       init_slider();
       init_filesChoosers();

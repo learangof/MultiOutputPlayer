@@ -1,33 +1,34 @@
 import { setCurrentTime } from "./slider.js"
 let startAt:JSON = JSON.parse('{}');
-export function initPlayer() {
+export function initPlayers() {
     initMainControls();
     initAudioControls();
 }
 function initMainControls() {
    // $("#play-all").click(play)
 }
-export function initVideoControls(videoPlayer:HTMLMediaElement) {
-    let name = '#video';
-    $('button[data-for="'+name+'"').each(function (index){
-        $(this).click(function (event:Event) {
-            EVENTS[this.id.split('-')[0]](this, name, videoPlayer);
+function initPlayer(names:string[], player:HTMLMediaElement){
+    names.forEach(function(name){
+        $('button[data-for="'+name+'"').each(function (index){
+            $(this).click(function (event:Event) {
+                EVENTS[this.id.split('-')[0]](this, name, player);
+                //EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
+            });
         });
-    });
-    $(".input[data-for='"+name+"']").on('keyup',function(event:any){
-        EVENTS[this.id](this, event)
-    });   
+        if(name != '#all'){
+            $(".input[data-for='"+name+"']").on('keyup',function(event:any){
+                EVENTS[this.id](this, event)
+            });  
+        }
+    }); 
+}
+export function initVideoControls(videoPlayer:HTMLMediaElement) {
+    let names:string[] = ['#all','#video'];
+    initPlayer(names, videoPlayer);
 }
 function initAudioControls() {
-    let name = '#audio';
-    $('button[data-for="'+name+'"').each(function (index){
-        $(this).click(function (event:Event) {
-            EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
-        });
-    });
-    $(".input[data-for='"+name+"']").on('keyup',function(event:any){
-        EVENTS[this.id](this, event)
-    });    
+    let names = ['#all','#audio']; 
+    initPlayer(names,<HTMLMediaElement>$(names[1])[0])
 }
 const EVENTS = {
     play(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
