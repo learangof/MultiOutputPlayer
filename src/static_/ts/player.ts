@@ -1,39 +1,47 @@
 import { setCurrentTime } from "./slider.js"
 let startAt:JSON = JSON.parse('{}');
+let playersName:string[] = [];
 export function initPlayers() {
-    initMainControls();
     initAudioControls();
+    initMainControls();
 }
-function initMainControls() {
-   // $("#play-all").click(play)
-}
-function initPlayer(names:string[], player:HTMLMediaElement){
-    names.forEach(function(name){
-        $('button[data-for="'+name+'"').each(function (index){
+function initMainControls() {  
+    $('button[data-for="#all"').off();
+    playersName.forEach(function(name:string) {
+        $('button[data-for="#all"').each(function (index:number) {
             $(this).click(function (event:Event) {
-                EVENTS[this.id.split('-')[0]](this, player);
-                //EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
+                let btnEvent:string = this.id;
+                (btnEvent == 'play')? tooglePlayBtn(this): "";
+                let btn:HTMLButtonElement = <HTMLButtonElement>$('button#'+btnEvent+'[data-for="'+name+'"')[0];
+                btn.click()
             });
         });
-        if(name != '#all'){
-            $(".input[data-for='"+name+"']").on('keyup',function(event:any){
-                EVENTS[this.id](this, event)
-            });  
-        }
-    }); 
+    });
+}
+function initPlayer(player:HTMLMediaElement){
+    let name:string = "#"+player.id
+    playersName.push(name);
+    $('button[data-for="'+name+'"').each(function (index){
+        $(this).click(function (event:Event) {
+            EVENTS[this.id.split('-')[0]](this, player);
+            //EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
+        });
+    });
+    $(".input[data-for='"+name+"']").on('keyup',function(event:any){
+        EVENTS[this.id](this, event)
+    });  
 }
 export function initVideoControls(videoPlayer:HTMLMediaElement) {
-    let names:string[] = ['#all','#video'];
-    initPlayer(names, videoPlayer);
+    initPlayer(videoPlayer);
+    initMainControls();
 }
 function initAudioControls() {
-    let names = ['#all','#audio']; 
-    initPlayer(names,<HTMLMediaElement>$(names[1])[0])
+    let name = '#audio';
+    initPlayer(<HTMLMediaElement>$(name)[0])
 }
 const EVENTS = {
     play(btn:HTMLButtonElement, player:HTMLMediaElement) {
-        $(btn).find("i").toggleClass("play");
-        $(btn).find("i").toggleClass("pause");
+        tooglePlayBtn(btn);
         let playerId:string = "#"+player.id;
         
         if (player.paused) {
@@ -122,7 +130,10 @@ const EVENTS = {
         });
     }
 };
-
+function tooglePlayBtn(btn:HTMLButtonElement) {
+    $(btn).find("i").toggleClass("play");
+    $(btn).find("i").toggleClass("pause");
+}
 function getTimeFromArray(timeArray:string[]) {
     let currentTime:number;
     switch (timeArray.length) {
