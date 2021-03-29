@@ -1,7 +1,6 @@
 import { setVideo } from "./fileChooser.js"
 import { initVideoControls } from "./player.js"
 
-
 export let files:File[] = [null,null];
 export let videoPlayer:HTMLVideoElement;
 
