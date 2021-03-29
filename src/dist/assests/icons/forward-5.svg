@@ -1,0 +1,18 @@
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	y="0px" viewBox="0 0 496 496" style="enable-background:new 0 0 496 496;" xml:space="preserve">
+	<style type="text/css">
+		.st0 {
+			font-family: ArialNarrow-Bold, Arial;
+		}
+
+		.st1 {
+			font-size: 200px;
+			font-weight: 700;
+		}
+	</style>
+	<path d="M248.5,0c63.7,0,124.9,24.6,170.9,68.7L455,33c15.1-15.1,41-4.4,41,17v134c0,13.3-10.7,24-24,24H337.9
+	c-21.4,0-32.1-25.9-17-41l41.8-41.8C332,96.4,291.6,80.3,249.5,80C157.1,79.2,79.2,154,80,249.5C80.8,340,154.2,416,248,416
+	c40.7,0.1,80.1-14.7,110.6-41.6c4.8-4.1,11.9-3.9,16.4,0.6l39.7,39.7c4.7,4.7,4.7,12.3,0,17c-0.2,0.2-0.3,0.3-0.5,0.5
+	c-45.5,41.2-104.8,64-166.2,63.9C111,496,0,385,0,248C0,111.2,111.7-0.2,248.5,0z" />
+	<text transform="matrix(1.16 0 0 1 169.3799 335.23)" class="st0 st1">5</text>
+</svg>
