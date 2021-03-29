@@ -1,5 +1,7 @@
+export let selectedOutputs:JSON = JSON.parse('{}');
+let devices:MediaDeviceInfo[];
+
 export function initAudio() {
-    let devices:MediaDeviceInfo[];
     async function chargeSources() {
         await navigator.mediaDevices.getUserMedia({ audio: true });
         devices = await navigator.mediaDevices.enumerateDevices();
@@ -18,8 +20,15 @@ export function initAudio() {
                 option.value = String(deviceIndex);
                 element.add(option);
             });
-        });
+            let name:string = this.dataset.for;
+            selectedOutputs[name] = [devices[this.value].deviceId,devices[this.value].label];            
+        });        
     };    
     chargeSources();
     $("#refresh-sources").click(chargeSources);
+    $(".audio-source").change(changeOutput);
+}
+function changeOutput() {
+    let name:string = this.dataset.for;
+    selectedOutputs[name] = [devices[this.value].deviceId,devices[this.value].label];
 }
