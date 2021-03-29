@@ -345,8 +345,8 @@
           <div class="tabs is-boxed">
             <ul>
               <li class="is-active"><a>Audio</a></li>
-              <li><a>Video</a></li>
-              <li><a>Subtitle</a></li>
+              <!-- <li><a>Video</a></li>
+              <li><a>Subtitle</a></li> -->
             </ul>
           </div>
           <!-- Main container -->
@@ -363,12 +363,12 @@
               </div>
               <div class="column is-three-fifth">
                 <div class="select w-100">
-                  <select class="w-100 audio-source">
+                  <select class="w-100 audio-source" data-for="#video">
                   </select>
                 </div>
               </div>
               <div class="column is-one-fifth">
-                <a class="button w-100">Live</a>
+                <a class="button w-100" disabled>Live</a>
               </div>
             </div>
 
@@ -380,22 +380,22 @@
               </div>
               <div class="column is-three-fifth">
                 <div class="select w-100">
-                  <select class="w-100 audio-source">
+                  <select class="w-100 audio-source" data-for="#audio">
                   </select>
                 </div>
               </div>
               <div class="column is-one-fifth">
-                <a class="button w-100">Live</a>
+                <a class="button w-100" disabled>Live</a>
               </div>
             </div>
           </div>
         </div>
         <!-- END MODAL CONTENT -->
         </section>
-        <footer class="modal-card-foot">
-          <button class="button is-success">Save changes</button>
-          <button class="button">Cancel</button>
-        </footer>
+        <!-- <footer class="modal-card-foot">
+          <button class="button is-success px-4 is-fullwidth save-config" data-modal-id="#modal-config"></button>Save</button>
+          <button class="button is-danger px-4 is-fullwidth close-config" data-modal-id="#modal-config">Cancel</button>
+        </footer> -->
       </div>
     </div>
 
