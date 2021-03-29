@@ -11,7 +11,7 @@ function initPlayer(names:string[], player:HTMLMediaElement){
     names.forEach(function(name){
         $('button[data-for="'+name+'"').each(function (index){
             $(this).click(function (event:Event) {
-                EVENTS[this.id.split('-')[0]](this, name, player);
+                EVENTS[this.id.split('-')[0]](this, player);
                 //EVENTS[this.id.split('-')[0]](this, name, <HTMLMediaElement>$(name)[0]);
             });
         });
@@ -31,26 +31,13 @@ function initAudioControls() {
     initPlayer(names,<HTMLMediaElement>$(names[1])[0])
 }
 const EVENTS = {
-    play(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+    play(btn:HTMLButtonElement, player:HTMLMediaElement) {
         $(btn).find("i").toggleClass("play");
         $(btn).find("i").toggleClass("pause");
+        let playerId:string = "#"+player.id;
         
         if (player.paused) {
-            if(startAt[playerId]){
-                switch (startAt[playerId].length) {
-                    case 1:
-                        player.currentTime = parseInt(startAt[playerId][0]);
-                        break;
-                    case 2:
-                        player.currentTime = (startAt[playerId][0]*60) + parseInt(startAt[playerId][1]);
-                        break;
-                    case 3:
-                        player.currentTime = (startAt[playerId][0]* 3600)+ (startAt[playerId][1] * 60) + parseInt(startAt[playerId][2]);
-                        break;
-                }
-            }else{
-                player.currentTime = 0;
-            }
+            (startAt[playerId] && ($(".input[data-for='"+playerId+"']").val() != ""))?player.currentTime = startAt[playerId]:"";
             let $player:JQuery = $(player);
             player.play();
             $player.on("timeupdate", (event: Event) => {
@@ -65,19 +52,22 @@ const EVENTS = {
             $(player).off( "timeupdate", "**" );
         }
     },
-    stop(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+    stop(btn:HTMLButtonElement, player:HTMLMediaElement) {
+        let playerId:string = "#"+player.id
         if (!player.paused) {
-            this.play($("button#play[data-for='"+playerId+"'")[0], playerId, player);
+            this.play($("button#play[data-for='"+playerId+"'")[0], player);
             $(player).off( "timeupdate", "**" );
         }
         player.currentTime = 0;
     },
-    for(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+    for(btn:HTMLButtonElement, player:HTMLMediaElement) {
+        let playerId:string = "#"+player.id
         let forTime:number = parseInt(btn.id.split('-')[1]);
         player.currentTime += forTime;
         setCurrentTime(player.currentTime, playerId);
     },
-    back(btn:HTMLButtonElement, playerId:string, player:HTMLMediaElement) {
+    back(btn:HTMLButtonElement, player:HTMLMediaElement) {
+        let playerId:string = "#"+player.id
         let forTime:number = parseInt(btn.id.split('-')[1]);
         player.currentTime -= forTime;        
         setCurrentTime(player.currentTime, playerId);
@@ -124,7 +114,8 @@ const EVENTS = {
         //     input += num;
         // });
         // input = input.replace(/\d{2}/g, "$&:");
-        startAt[input.dataset.for] = value.split(':');
+        let time:number = getTimeFromArray(value.split(':'));
+        startAt[input.dataset.for] = time;
 
         $input.val(function () {
             return value;
@@ -132,7 +123,22 @@ const EVENTS = {
     }
 };
 
-$(".input[data-for='#audio']").on('keyup', function (event:any) {
-
-    
-});
+function getTimeFromArray(timeArray:string[]) {
+    let currentTime:number;
+    switch (timeArray.length) {
+        case 1:
+            currentTime = parseInt(timeArray[0]);
+            break;
+        case 2:
+            currentTime = (parseInt(timeArray[0])*60) + parseInt(timeArray[1]);
+            break;
+        case 3:
+            currentTime = (parseInt(timeArray[0])* 3600)+ (parseInt(timeArray[1]) * 60) + parseInt(timeArray[2]);
+            break;
+        default:
+            console.log("time error");
+            currentTime = 0;
+            break;
+    }
+    return currentTime;
+}
