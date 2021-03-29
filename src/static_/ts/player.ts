@@ -2,6 +2,8 @@ import { setCurrentTime } from "./slider.js"
 let startAt:JSON = JSON.parse('{}');
 let playersName:string[] = [];
 export function initPlayers() {
+    //TODO add the right output
+      //TODO add right behaviour to play and so on;
     initAudioControls();
     initMainControls();
 }
