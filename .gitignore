@@ -3,6 +3,8 @@
 
 */node_modules
 */static
+*/dist
+!*/dist/package.json
 
 package-lock.json
 *.mp3
