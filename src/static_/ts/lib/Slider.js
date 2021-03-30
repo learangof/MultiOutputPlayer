@@ -1,4 +1,19 @@
+/*
+ * @Author: mkll
+ * @Date: 2019-10-28 16:15:02
+ * @LastEditors: mkll
+ * @LastEditTime: 2019-11-14 20:46:38
+ * @Description: 昨晚居然没有失眠，蛤蛤，通宵了:(
+ * @See:
+ */
 'use strict';
+/**
+ * @description
+ * @author mkll
+ * @date 2019-11-01
+ * @class DraggableProgressbar
+ * @param
+ */
 export default class Slider {
     constructor({ width, height, backgroundColor, barColor, scale, Duration, formatProgress = false, alwayShowBall = false, hasBall = true, hasIndicator = true, ballColor, ballRadius, format, indicatorColor, indicatorTextColor }) {
         if (typeof Duration !== 'number')
@@ -68,6 +83,7 @@ export default class Slider {
             this.duration = $(`<div class="duration"></div>`);
             this.currentTime
                 .css({
+                //paddingRight: '8px',
                 width: '3.25rem'
             });
             this.duration
@@ -248,7 +264,7 @@ export default class Slider {
         if (typeof progress !== 'number')
             throw 'expected a number';
         if (progress > this.Duration || progress < 0)
-            throw 'parameter should range from 0 to ' + this.Duration;
+            throw 'parameter should range from 0 to '+this.Duration;
         this.currentTime.text(this.format(progress));
         progress = (progress / this.Duration * 100);
         this.bar.css('width', `${progress}%`);
