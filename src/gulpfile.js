@@ -5,7 +5,6 @@ var refresh = require('gulp-refresh');
 var del = require('del');       
 var notify = require('gulp-notify');
 
-
 sass.compiler = require('node-sass');
 
 const root_input = './static_/';
@@ -48,9 +47,9 @@ gulp.task('static_prod', function() {
       .pipe(gulp.dest("./dist/static/"))
       .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
-gulp.task('assests_prod', function() {
-  return gulp.src('./assests/**')
-      .pipe(gulp.dest("./dist/assests/"))
+gulp.task('assets_prod', function() {
+  return gulp.src('./assets/**')
+      .pipe(gulp.dest("./dist/assets/"))
       .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
 /* WATCH */
@@ -61,12 +60,12 @@ gulp.task('watch', function () {
     gulp.watch(root_input + "ts/**/*.ts", gulp.parallel(['ts']));
     gulp.watch(root_input + "ts/**/*.js", gulp.parallel(['ts']));
     gulp.watch("./views/**/*.html").on("change", refresh.reload);
-    gulp.watch("./assests/**").on("change", refresh.reload);
+    gulp.watch("./assets/**").on("change", refresh.reload);
   });
 
 /* Main Functions */
 gulp.task('default', gulp.parallel(['sass', 'ts', 'watch']));
-gulp.task('prod', gulp.series(['clean_prod','html_prod','static_prod','assests_prod']));
+gulp.task('prod', gulp.series(['clean_prod','html_prod','static_prod','assets_prod']));
 
 
 

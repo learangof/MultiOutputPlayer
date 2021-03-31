@@ -1,9 +1,11 @@
 # MultiOutputPlayer
 
-This is an Media Player with multiple output
+This is an Media Player with multiple audio outputs
+
 
 ###Techs
 nw.js
-bulma
-typescript
-gulp
+Bulma
+TypeScript
+JQuery
+Gulp
