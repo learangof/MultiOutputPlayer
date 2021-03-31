@@ -7,24 +7,24 @@ var notify = require('gulp-notify');
 
 sass.compiler = require('node-sass');
 
-const root_input = './static_/';
-const root_output = './static/';
+const root = './static/';
 
 /* Development */
 gulp.task('sass', function () {
-  return gulp.src(root_input + 'sass/base.scss')
+  return gulp.src(root + 'sass/base.scss')
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest(root_output))
+    .pipe(gulp.dest(root + "css/"))
     .pipe(refresh());
 });
 
 var tsProject = ts.createProject('tsconfig.json');
 gulp.task('ts', function () {
-    return gulp.src([root_input + 'ts/**/*.ts',root_input + 'ts/**/*.js'])
+    return gulp.src([root + 'ts/**/*.ts',root + 'ts/**/*.js'])
         .pipe(tsProject())
-        .pipe(gulp.dest(root_output))
+        .pipe(gulp.dest(root + "js/"))
         .pipe(refresh());
 });
+
 /* Production */
 gulp.task('clean_prod', function() {
   return del([
@@ -37,21 +37,33 @@ gulp.task('clean_prod', function() {
     // '!dist/mobile/deploy.json'
   ]);
 });
+
 gulp.task('html_prod', function() {
   return gulp.src('./views/**/*.html')
       .pipe(gulp.dest("./dist/views/"))
       .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
-gulp.task('static_prod', function() {
-  return gulp.src('./static/**')
-      .pipe(gulp.dest("./dist/static/"))
-      .pipe(notify({message:'Copy <%= file.relative %>'}));
+
+gulp.task('js_prod', function() {
+  return gulp.src('./static/js/**')
+      .pipe(gulp.dest("./dist/static/js/"))
+      .pipe(notify({message:'Copy <%= file.relative %>'}))
 });
+
+gulp.task('css_prod', function() {
+  return gulp.src('./static/css/**')
+      .pipe(gulp.dest("./dist/static/css/"))
+      .pipe(notify({message:'Copy <%= file.relative %>'}))
+});
+
+gulp.task('static_prod', gulp.series(['js_prod','css_prod']));
+
 gulp.task('assets_prod', function() {
   return gulp.src('./assets/**')
       .pipe(gulp.dest("./dist/assets/"))
       .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
+
 /* WATCH */
 gulp.task('watch', function () {
     refresh.listen();

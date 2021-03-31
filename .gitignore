@@ -2,8 +2,8 @@
 /node_modules
 
 */node_modules
-*/static
-*/dist
+*/static/js
+*/static/css
 !*/dist/package.json
 
 package-lock.json

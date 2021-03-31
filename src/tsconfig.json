@@ -14,5 +14,5 @@
         "resolveJsonModule": true,
         "target": "es6"
     },
-    "include": ["./static_/"]
+   // "include": ["./static_/"]
 }

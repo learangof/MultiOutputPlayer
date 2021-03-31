@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="has-background-primary-light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../static/base.css" rel="stylesheet">
+  <script src="../static/lib/jquery.min.js"></script>
+  <script src="../static/main.js" type="module" defer></script>
+  <title>MultiOutput Player</title>
+</head>
+
+<body>
+  <!-- Navaar -->
+  <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand is-justify-content-space-between">
+      <a class="navbar-item" href="#">
+        Multi-Output Player
+      </a>
+      <div class="navbar-item is-hidden-desktop">
+        <button class="button open-config" data-modal-id="#modal-config">
+          <span class="icon is-small">
+            <i class="icon settings"></i>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item is-hidden-touch">
+          <button class="button open-config" data-modal-id="#modal-config">
+            <span class="icon is-small">
+              <i class="icon settings"></i>
+            </span>
+          </button>
+        </div>   
+      </div>
+    </div>
+  </nav>
+  <!-- Body -->
+  <div class="container is-fluid">
+    <!-- First Card -->
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title">
+          Main Control
+        </p>
+      </header>
+      <div class="card-content">
+        <div class="columns is-mobile is-multiline is-vcentered is-1">
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="play" class="button is-primary w-100" data-for="#all">
+              <span class="icon is-small">
+                <i class="icon-svg play"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered right-divider">
+            <button id="stop" class="button is-primary w-100" data-for="#all">
+              <span class="icon is-small">
+                <i class="icon-svg stop"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="back-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#all">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg backward-60"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="back-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#all">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg backward-5"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered right-divider-dotted">
+            <button id="back-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#all">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg backward-1"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="for-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#all">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg forward-1"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="for-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#all">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg forward-5"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="for-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#all">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg forward-60"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Second Card -->
+    <div class="card">
+          <header class="card-header">
+            <p class="card-header-title is-flex-grow-0 pr-0">
+              Video:
+            </p>
+            <div id="video-file" class="file has-text is-fullwidth is-right is-primary card-header-title pl-2">
+              <label class="file-label">
+                <input class="file-input" accept="video/*" type="file" name="resume">
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="icon-svg upload"></i>
+                  </span>
+                  <span class="file-label">
+                    Choose a file…
+                  </span>
+                </span>
+                <span class="file-name has-text-weight-normal pl-2">
+                  No file uploaded
+                </span>
+              </label>
+            </div>
+          </header>
+          <div class="card-content">
+            <div class="columns is-vcentered is-mobile is-multiline is-1">
+              <div class="column is-three-fifths"></div>
+              <div class="column is-one-fifth">
+                <button disabled id="open-video" class="button is-info w-100 is-small is-rounded">
+                  Open Window
+                </button>
+              </div>
+              <div class="column is-one-fifth">
+                <button disabled id="fullscreen-video" class="button is-info w-100 is-small is-rounded">
+                  Full Screen
+                </button>
+              </div>
+              <div class="column has-text-centered">
+                <button id="play" class="button is-primary w-100" data-for='#video'>
+                  <span class="icon is-small">
+                    <i class="icon-svg play"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column has-text-centered">
+                <button id="stop" class="button is-primary w-100" data-for="#video">
+                  <span class="icon is-small">
+                    <i class="icon-svg stop"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-three-quarters">
+                <!-- has-output-tooltip  -->
+                <div id="slider1" class="slider-jq" data-for="#video"></div>
+              </div>
+              <div class="column is-one-quarter right-divider">
+                <div class="field is-horizontal">
+                  <div class="field-label is-small mr-3">
+                    <label class="label">Start at:</label>
+                  </div>
+                  <div class="field-body">
+                    <div class="field">
+                      <p class="control">
+                        <input id="startTime" class="input has-text-centered" type="text" placeholder="00:00:00" data-for="#video">
+                      </p>
+                      <p class="help">Type the time (hh:mm:ss)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button id="back-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#video">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg backward-60"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button id="back-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#video">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg backward-5"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered right-divider-dotted">
+                <button id="back-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#video">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg backward-1"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button id="for-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#video">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg forward-1"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button id="for-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#video">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg forward-5"></i>
+                  </span>
+                </button>
+              </div>
+              <div class="column is-one-quarter-mobile has-text-centered">
+                <button id="for-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#video">
+                  <span class="icon is-small ml-1">
+                    <i class="icon-svg forward-60"></i>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+    </div>
+    <!-- Third/so on Card -->
+    <div class="card">
+      <header class="card-header">
+        <p class="card-header-title is-flex-grow-0 pr-0">
+          Audio:
+        </p>
+        <div id="audio-file" class="file has-text is-fullwidth is-right is-primary card-header-title pl-2">
+          <label class="file-label">
+            <input class="file-input" accept="audio/*" type="file" name="resume">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="icon-svg upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name has-text-weight-normal pl-2">
+              No file uploaded
+            </span>
+          </label>
+        </div>
+      </header>
+      <div class="card-content">
+        <div class="columns is-vcentered is-mobile is-multiline is-1">
+          <div class="column is-full is-hidden">
+            <audio controls id="audio">
+              <source src="">
+              Your browser does not support the audio element.
+            </audio>
+          </div>
+          <div class="column has-text-centered">
+            <button id="play" class="button is-primary w-100" data-for="#audio">
+              <span class="icon is-small">
+                <i class="icon-svg play"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column has-text-centered">
+            <button id="stop" class="button is-primary w-100" data-for="#audio">
+              <span class="icon is-small">
+                <i class="icon-svg stop"></i>
+              </span>
+            </button>
+          </div>
+          <!-- Slider Time inside this column -->
+          <div class="column is-three-quarters">
+            <div id="slider2" class="slider-jq" data-for="#audio"></div>
+          </div>
+          <div class="column is-one-quarter right-divider">
+            <div class="field is-horizontal">
+              <div class="field-label is-small mr-3">
+                <label class="label">Start at:</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <p class="control">
+                    <input id="startTime" class="input has-text-centered" type="text" placeholder="00:00:00" data-for="#audio">
+                  </p>
+                  <p class="help">Type the time (hh:mm:ss)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="back-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#audio">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg backward-60"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="back-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#audio">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg backward-5"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered right-divider-dotted">
+            <button id="back-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#audio">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg backward-1"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="for-1" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#audio">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg forward-1"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="for-5" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#audio">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg forward-5"></i>
+              </span>
+            </button>
+          </div>
+          <div class="column is-one-quarter-mobile has-text-centered">
+            <button id="for-60" class="button is-primary pl-1 has-text-weight-bold has-text-black w-100" data-for="#audio">
+              <span class="icon is-small ml-1">
+                <i class="icon-svg forward-60"></i>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="modal-config" class="modal" aria-hidden="">
+      <div class="modal-background close-config" data-modal-id="#modal-config"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Settings</p>
+          <button class="delete close-config" data-modal-id="#modal-config" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+        <!-- Content ... -->
+        <div class="container m-0">
+          <div class="tabs is-boxed">
+            <ul>
+              <li class="is-active"><a>Audio</a></li>
+              <!-- <li><a>Video</a></li>
+              <li><a>Subtitle</a></li> -->
+            </ul>
+          </div>
+          <!-- Main container -->
+          <div class="container">  
+            <div class="columns px-3 my-0">
+              <div class="column has-text-right">
+                <button id="refresh-sources" class="button is-primary">Refresh Output</button>
+              </div>
+            </div>
+            <!-- Video Output -->            
+            <div id="" class="columns is-vcentered px-2 my-0">
+              <div class="column is-one-fifth pr-0">
+                Video Output:
+              </div>
+              <div class="column is-three-fifth">
+                <div class="select w-100">
+                  <select class="w-100 audio-source" data-for="#video">
+                  </select>
+                </div>
+              </div>
+              <div class="column is-one-fifth">
+                <a class="button w-100" disabled>Live</a>
+              </div>
+            </div>
+
+            <div class="bottom-divier"></div>
+            <!-- Eng Audio Output -->
+            <div id="" class="columns is-vcentered px-2 my-0">
+              <div class="column is-one-fifth pr-0">
+                English Output:
+              </div>
+              <div class="column is-three-fifth">
+                <div class="select w-100">
+                  <select class="w-100 audio-source" data-for="#audio">
+                  </select>
+                </div>
+              </div>
+              <div class="column is-one-fifth">
+                <a class="button w-100" disabled>Live</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- END MODAL CONTENT -->
+        </section>
+        <!-- <footer class="modal-card-foot">
+          <button class="button is-success px-4 is-fullwidth save-config" data-modal-id="#modal-config"></button>Save</button>
+          <button class="button is-danger px-4 is-fullwidth close-config" data-modal-id="#modal-config">Cancel</button>
+        </footer> -->
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
+
