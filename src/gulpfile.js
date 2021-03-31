@@ -67,10 +67,10 @@ gulp.task('assets_prod', function() {
 /* WATCH */
 gulp.task('watch', function () {
     refresh.listen();
-    gulp.watch(root_input + "sass/**/*.scss", gulp.parallel(['sass']));
-    gulp.watch(root_input + "sass/**/*.sass", gulp.parallel(['sass']));
-    gulp.watch(root_input + "ts/**/*.ts", gulp.parallel(['ts']));
-    gulp.watch(root_input + "ts/**/*.js", gulp.parallel(['ts']));
+    gulp.watch(root + "sass/**/*.scss", gulp.parallel(['sass']));
+    gulp.watch(root + "sass/**/*.sass", gulp.parallel(['sass']));
+    gulp.watch(root + "ts/**/*.ts", gulp.parallel(['ts']));
+    gulp.watch(root + "ts/**/*.js", gulp.parallel(['ts']));
     gulp.watch("./views/**/*.html").on("change", refresh.reload);
     gulp.watch("./assets/**").on("change", refresh.reload);
   });

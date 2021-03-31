@@ -2,9 +2,9 @@
   "name": "multi-output-player",
   "version": "1.0.0",
   "description": "",
-  "main": "src/views/main.html",
+  "main": "src/dist/views/main.html",
   "scripts": {
-    "dev": "nw src/",
+    "dev": "nw src/dist/",
     "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/dist/"
   },
   "keywords": [],
