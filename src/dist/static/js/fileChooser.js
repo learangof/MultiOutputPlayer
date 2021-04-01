@@ -1,12 +1,14 @@
 import { ableOpenButton } from "./button.js";
 import { setDuration } from "./slider.js";
+import { allowPlayer } from "./player.js";
 let videoSource;
 let audioSource;
+let readyFiles = { '#audio': false, '#video': false };
 export function init_filesChoosers() {
     const fileVideoInput = $("#video-file input[type=file]");
     const fileAudioInput = $("#audio-file input[type=file]");
-    fileVideoInput.on("change", { isVideo: true }, changeName);
-    fileAudioInput.on("change", { isVideo: false }, changeName);
+    fileVideoInput.on("change", changeName);
+    fileAudioInput.on("change", changeName);
     function changeName() {
         if (this.files.length > 0) {
             const fileName = $(this).siblings('.file-name');
@@ -29,7 +31,11 @@ export function setVideo(player) {
     playerSrc.setAttribute('src', url);
     player.load();
     player.oncanplay = function () {
-        setDuration(player.duration, "#video");
+        let name = "#" + player.id;
+        setDuration(player.duration, name);
+        allowPlayer(name);
+        readyFiles[name] = true;
+        (readyFiles['#audio']) ? allowPlayer('#all') : "";
     };
 }
 function setAudio() {
@@ -39,6 +45,10 @@ function setAudio() {
     playerSrc.setAttribute('src', url);
     player.load();
     player.oncanplay = function () {
-        setDuration(player.duration, "#audio");
+        let name = "#" + player.id;
+        setDuration(player.duration, name);
+        allowPlayer(name);
+        readyFiles[name] = true;
+        (readyFiles['#video']) ? allowPlayer('#all') : "";
     };
 }

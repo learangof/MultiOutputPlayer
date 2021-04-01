@@ -132,3 +132,13 @@ function getTimeFromArray(timeArray) {
     }
     return currentTime;
 }
+export function allowPlayer(name) {
+    $('button[data-for="' + name + '"').each(function () {
+        this.disabled = false;
+    });
+    if (name != "#all") {
+        $(".input[data-for='" + name + "']").each(function () {
+            this.disabled = false;
+        });
+    }
+}

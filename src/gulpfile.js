@@ -77,7 +77,7 @@ gulp.task('watch', function () {
 
 /* Main Functions */
 gulp.task('default', gulp.parallel(['sass', 'ts', 'watch']));
-gulp.task('prod', gulp.series(['clean_prod','html_prod','static_prod','assets_prod']));
+gulp.task('prod', gulp.series(['clean_prod','html_prod','ts','sass','static_prod','assets_prod']));
 
 
 

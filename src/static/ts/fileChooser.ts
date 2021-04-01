@@ -9,7 +9,6 @@ export function init_filesChoosers() {
   //TODO Generalize for audios
   const fileVideoInput: JQuery = $("#video-file input[type=file]");
   const fileAudioInput: JQuery = $("#audio-file input[type=file]");
-  console.log(readyFiles);
   
   fileVideoInput.on("change",changeName);
   fileAudioInput.on("change",changeName);

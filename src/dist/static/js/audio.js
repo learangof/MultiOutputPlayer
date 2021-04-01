@@ -18,12 +18,13 @@ export function initAudio() {
                 device.deviceId != "default" &&
                 device.deviceId != "communications");
             $(".audio-source").each(function (sourceIndex, element) {
-                element.innerHTML = "";
+                let ele = element;
+                ele.innerHTML = "";
                 devices.forEach(function (item, deviceIndex) {
                     var option = document.createElement("option");
                     option.textContent = item.label;
                     option.value = String(deviceIndex);
-                    element.add(option);
+                    ele.add(option);
                 });
                 let name = this.dataset.for;
                 selectedOutputs[name] = [devices[this.value].deviceId, devices[this.value].label];

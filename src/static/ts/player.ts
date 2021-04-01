@@ -158,7 +158,12 @@ function getTimeFromArray(timeArray:string[]) {
     return currentTime;
 }
 export function allowPlayer(name:string){
-    $('button[data-for="'+name+'"').each(function (index){
+    $('button[data-for="'+name+'"').each(function (){
         this.disabled=false;
     });
+    if (name != "#all") {
+        $(".input[data-for='"+name+"']").each(function(){
+            this.disabled=false;
+        });
+    }
 }
