@@ -50,7 +50,8 @@ const EVENTS = {
         if (player.paused) {
             (startAt[playerId] && ($(".input[data-for='"+playerId+"']").val() != ""))?player.currentTime = startAt[playerId]:"";
             let $player:JQuery = $(player);
-            //player.setSinkId(selectedOutputs[playerId][0]);
+            // @ts-ignore
+            player.setSinkId(selectedOutputs[playerId][0]);
             player.play();
             $player.on("timeupdate", (event: Event) => {
                 setCurrentTime(player.currentTime, playerId);

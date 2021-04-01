@@ -1,4 +1,5 @@
 import { setCurrentTime } from "./slider.js";
+import { selectedOutputs } from "./audio.js";
 let startAt = JSON.parse('{}');
 let playersName = [];
 export function initPlayers() {
@@ -45,6 +46,7 @@ const EVENTS = {
         if (player.paused) {
             (startAt[playerId] && ($(".input[data-for='" + playerId + "']").val() != "")) ? player.currentTime = startAt[playerId] : "";
             let $player = $(player);
+            player.setSinkId(selectedOutputs[playerId][0]);
             player.play();
             $player.on("timeupdate", (event) => {
                 setCurrentTime(player.currentTime, playerId);

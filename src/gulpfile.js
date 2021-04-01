@@ -4,6 +4,7 @@ var ts = require("gulp-typescript");
 var refresh = require('gulp-refresh');
 var del = require('del');       
 var notify = require('gulp-notify');
+const changed = require('gulp-changed');
 
 sass.compiler = require('node-sass');
 
@@ -39,29 +40,37 @@ gulp.task('clean_prod', function() {
 });
 
 gulp.task('html_prod', function() {
+  var destination = "./dist/views/";
   return gulp.src('./views/**/*.html')
-      .pipe(gulp.dest("./dist/views/"))
-      .pipe(notify({message:'Copy <%= file.relative %>'}));
+  .pipe(changed(destination))
+  .pipe(gulp.dest(destination))
+  .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
 
 gulp.task('js_prod', function() {
+  var destination = "./dist/static/js/";
   return gulp.src('./static/js/**')
-      .pipe(gulp.dest("./dist/static/js/"))
-      .pipe(notify({message:'Copy <%= file.relative %>'}))
+  .pipe(changed(destination))
+  .pipe(gulp.dest(destination))
+  .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
 
 gulp.task('css_prod', function() {
+  var destination = "./dist/static/css/";
   return gulp.src('./static/css/**')
-      .pipe(gulp.dest("./dist/static/css/"))
-      .pipe(notify({message:'Copy <%= file.relative %>'}))
+  .pipe(changed(destination))
+  .pipe(gulp.dest(destination))
+  .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
 
 gulp.task('static_prod', gulp.series(['js_prod','css_prod']));
 
 gulp.task('assets_prod', function() {
+  var destination = "./dist/assets/";
   return gulp.src('./assets/**')
-      .pipe(gulp.dest("./dist/assets/"))
-      .pipe(notify({message:'Copy <%= file.relative %>'}));
+  .pipe(changed(destination))
+  .pipe(gulp.dest(destination))
+  .pipe(notify({message:'Copy <%= file.relative %>'}));
 });
 
 /* WATCH */
