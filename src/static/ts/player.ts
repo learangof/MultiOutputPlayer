@@ -157,3 +157,8 @@ function getTimeFromArray(timeArray:string[]) {
     }
     return currentTime;
 }
+export function allowPlayer(name:string){
+    $('button[data-for="'+name+'"').each(function (index){
+        this.disabled=false;
+    });
+}

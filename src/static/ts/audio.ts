@@ -11,14 +11,14 @@ export function initAudio() {
             device.deviceId != "default" &&
             device.deviceId != "communications"
         );
-        
-        $(".audio-source").each(function (sourceIndex:Number, element:HTMLSelectElement) {
-            element.innerHTML = "";
+        $(".audio-source").each(function (sourceIndex:Number, element:Element) {
+            let ele:HTMLSelectElement = <HTMLSelectElement>element;
+            ele.innerHTML = "";
             devices.forEach(function (item:MediaDeviceInfo, deviceIndex:Number) {
                 var option = document.createElement("option");
                 option.textContent = item.label;
                 option.value = String(deviceIndex);
-                element.add(option);
+                ele.add(option);
             });
             let name:string = this.dataset.for;
             selectedOutputs[name] = [devices[this.value].deviceId,devices[this.value].label];            

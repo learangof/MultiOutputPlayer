@@ -1,5 +1,6 @@
 import { ableOpenButton } from "./button.js";
 import { setDuration } from "./slider.js"
+import { allowPlayer } from "./player.js"
 
 let videoSource:File;
 let audioSource:File;
@@ -31,7 +32,9 @@ export function setVideo(player:HTMLVideoElement) {
     playerSrc.setAttribute('src', url);
     player.load();
     player.oncanplay = function () {
-      setDuration(player.duration, "#video");
+      let name = "#"+player.id;
+      setDuration(player.duration, name);
+      allowPlayer(name);
     };    
 }
 
@@ -42,6 +45,8 @@ function setAudio() {
   playerSrc.setAttribute('src', url);
   player.load();
   player.oncanplay  = function () {
-    setDuration(player.duration, "#audio"); 
+    let name = "#"+player.id;
+    setDuration(player.duration, name); 
+    allowPlayer(name);
   };
 }
