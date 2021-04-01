@@ -4,11 +4,15 @@ import { allowPlayer } from "./player.js"
 
 let videoSource:File;
 let audioSource:File;
+let readyFiles = {'#audio':false,'#video':false};
 export function init_filesChoosers() {
+  //TODO Generalize for audios
   const fileVideoInput: JQuery = $("#video-file input[type=file]");
   const fileAudioInput: JQuery = $("#audio-file input[type=file]");
-  fileVideoInput.on("change",{ isVideo: true },changeName);
-  fileAudioInput.on("change",{ isVideo: false },changeName);
+  console.log(readyFiles);
+  
+  fileVideoInput.on("change",changeName);
+  fileAudioInput.on("change",changeName);
 
   function changeName() {
     if (this.files.length > 0) {
@@ -35,6 +39,8 @@ export function setVideo(player:HTMLVideoElement) {
       let name = "#"+player.id;
       setDuration(player.duration, name);
       allowPlayer(name);
+      readyFiles[name] = true;
+      (readyFiles['#audio'])? allowPlayer('#all'):"";
     };    
 }
 
@@ -48,5 +54,7 @@ function setAudio() {
     let name = "#"+player.id;
     setDuration(player.duration, name); 
     allowPlayer(name);
+    readyFiles[name] = true;
+    (readyFiles['#video'])? allowPlayer('#all'):"";
   };
 }
