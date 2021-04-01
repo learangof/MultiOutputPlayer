@@ -13,6 +13,5 @@
         "removeComments": true,
         "resolveJsonModule": true,
         "target": "es6"
-    },
-   // "include": ["./static_/"]
+    }
 }
