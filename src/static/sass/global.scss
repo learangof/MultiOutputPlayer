@@ -13,3 +13,10 @@
 .bottom-divier{
     border-bottom: 3px solid #bbb;
 }
+.is-text-overflow{
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 10px;
+}

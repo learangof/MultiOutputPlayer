@@ -20,11 +20,9 @@ function checkAudioOutputs(event:Event) {
         }
         tempItem = selectedOutputs[item][0]
     }
-    if (!sameOutputs) {
-        toggleModalClasses(event);
-    }else {
-        alert ("audio outputs are the same");
+    if (sameOutputs) {
+        alert ("Warning! \nThe Audio outputs are the same");
     }
-    
+    toggleModalClasses(event);
 }
 
