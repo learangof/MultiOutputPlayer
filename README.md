@@ -2,13 +2,13 @@
 
 This is an Media Player with multiple audio outputs
 
-
-### Techs
-- nw.js
-- Bulma
-- TypeScript
-- JQuery
-- Gulp
+Things you will use:
+* [Node.js](https://nodejs.org)
+* [NW.js](https://nwjs.io)
+* [Bulma](https://bulma.io/documentation)
+* [TypeScript]
+* JQuery
+* Gulp
 
 ### To Install
 ``` js
