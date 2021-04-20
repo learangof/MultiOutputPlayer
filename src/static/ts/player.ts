@@ -5,6 +5,8 @@ let startAt:JSON = JSON.parse('{}');
 let playersName:string[] = [];
 export function initPlayers() {
     //TODO add right behaviour to play and so on;
+    //TODO mix player and button 
+    // TODO fix error when close and open mulipletime the video it crash
     initAudioControls();
     initMainControls();
 }
