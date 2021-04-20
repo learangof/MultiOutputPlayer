@@ -3,7 +3,7 @@
 This is an Media Player with multiple audio outputs
 
 
-###Techs
+### Techs
 nw.js
 Bulma
 TypeScript
