@@ -41,7 +41,7 @@ gulp prod
 // In the root folder
 npm run prod
 ```
-if you want to add or remove any build platform edit the package.json in the root folder.
+if you want to add or remove any build platform edit the follogin line into the package.json in the root folder.
 ``` JSON
 "scripts": {
     "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/dist/"
