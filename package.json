@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/dist/views/main.html",
   "scripts": {
-    "dev": "nw src/dist/",
+    "dev": "nw src/",
     "prod": "nwbuild --platforms win32,win64,osx64,linux32,linux64 --buildDir dist/ src/dist/"
   },
   "keywords": [],
